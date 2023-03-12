@@ -364,12 +364,12 @@ https://templatemo.com/tm-583-festava-live
                     <div class="col-lg-8 col-12 mx-auto">
                         <h2 class="text-center mb-4">Plans, you' love</h2>
                     </div>
-
+                    {% for i in t %}
                     <div class="col-lg-6 col-12">
                         <div class="pricing-thumb">
                             <div class="d-flex">
                                 <div>
-                                    <h3><small>Early Bird</small> $120</h3>
+                                    <h3><small>Early Bird</small> ${{i.normal_ticket_price}}</h3>
 
                                     <p>Including good things:</p>
                                 </div>
@@ -387,7 +387,7 @@ https://templatemo.com/tm-583-festava-live
                                 <li class="pricing-list-item">standard content</li>
                             </ul>
 
-                            <a class="link-fx-1 color-contrast-higher mt-4" href="ticket.html">
+                            <a class="link-fx-1 color-contrast-higher mt-4" href="{% url 'customar:ticket' price=i.normal_ticket_price %}">
                                 <span>Buy Ticket</span>
                                 <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
                                     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -399,12 +399,12 @@ https://templatemo.com/tm-583-festava-live
                             </a>
                         </div>
                     </div>
-
+                    
                     <div class="col-lg-6 col-12 mt-4 mt-lg-0">
                         <div class="pricing-thumb">
                             <div class="d-flex">
                                 <div>
-                                    <h3><small>Standard</small> $240</h3>
+                                    <h3><small>Standard</small> ${{i.premium_ticket_price}}</h3>
 
                                     <p>What makes a premium festava?</p>
                                 </div>
@@ -422,7 +422,7 @@ https://templatemo.com/tm-583-festava-live
                                 <li class="pricing-list-item">live chat support</li>
                             </ul>
 
-                            <a class="link-fx-1 color-contrast-higher mt-4" href="ticket.html">
+                            <a class="link-fx-1 color-contrast-higher mt-4" href="{% url 'customar:ticket' price=i.premium_ticket_price %}">
                                 <span>Buy Ticket</span>
                                 <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
                                     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -434,7 +434,7 @@ https://templatemo.com/tm-583-festava-live
                             </a>
                         </div>
                     </div>
-
+                    {% endfor %}
                 </div>
             </div>
         </section>
