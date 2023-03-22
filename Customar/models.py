@@ -40,10 +40,21 @@ class Buyer_info(models.Model):
   
     def ticket_number(self):
         return self.num_of_ticket
-         
+    
 
+class Wallet(models.Model):
+    user                 = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    wallet_ballance      = models.FloatField(default=0)
+    created_at           = models.DateTimeField(auto_now_add=True)
+    updated_at           = models.DateTimeField(auto_now=True)
+         
+    def __str__(self) -> str:
+        return str(self.user.email)
 
 class Ticket(models.Model):
+    event_name = models.CharField(max_length=150)
+    event_type = models.CharField(max_length=150)
+    close_status = models.BooleanField(default=False)
     normal_ticket_price  = models.IntegerField()
     premium_ticket_price = models.IntegerField()
     Total_seat           = models.IntegerField()
@@ -55,6 +66,12 @@ class Ticket(models.Model):
     @staticmethod
     def get_ticket():
         return Ticket.objects.all()
+
+
+    
+
+    
+
          
 
 

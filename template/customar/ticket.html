@@ -14,7 +14,7 @@
                 <form class="custom-form ticket-form mb-5 mb-lg-0" method="POST" role="form">
                     {% csrf_token %}
                     <h2 class="text-center mb-4">Get started here</h2>
-
+                    {% include 'msg.html' %}
                     <div class="ticket-form-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">

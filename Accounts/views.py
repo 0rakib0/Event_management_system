@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import CustomUser as User
+from Customar.models import Wallet
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, logout, authenticate
@@ -29,6 +30,11 @@ def User_register(request):
         )
         user.set_password(password1)
         user.save()
+        wallet = Wallet.objects.create(
+            user = user,
+            wallet_ballance = 0,
+        )
+        wallet.save()
         messages.success(request, 'Account succeefully created')
         return redirect('Login:login')
                 
@@ -54,7 +60,8 @@ def User_logout(request):
     return redirect('customar:home')
 
 def Profile(request):
+    wallate = Wallet.objects.get(user=request.user.id)
     context = {
-
+        'wallate':wallate
     }
     return render(request, 'login/profile.html', context)
