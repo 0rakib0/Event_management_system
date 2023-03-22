@@ -1,12 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Hello bangladesh I am Rakibul hasan here</h2>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+  Ticket
+{% endblock title %}
+
+{% block body %}
+<section class="ticket-section section-padding">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-10 mx-auto">
+                <form class="custom-form ticket-form mb-5 mb-lg-0" method="POST" role="form">
+                    {% csrf_token %}
+                    <h2 class="text-center mb-4">Get started here</h2>
+
+                    <div class="ticket-form-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <label for="ticket-form-name">Full Name</label>
+                                <input type="text" name="full_name" id="ticket-form-name"
+                                    class="form-control" value="{{user.Full_name}}" placeholder="Full name" required>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <label for="email">Email Address</label>
+                                <input type="email" name="email" readonly id="email"
+                                    value="{{user.email}}" class="form-control" required>
+                            </div>
+                        </div>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" name="phone"
+                            value="{{user.phone}}" required="">
+
+                        <h6>Ticket Price</h6>
+                        <input type="number" class="form-control" name="ticket_price"
+                            value="{{price}}" readonly required="">
+                        
+                        <label for="num_tiket">Number Of Ticket</label>
+                        <input type="number" name="num_tiket" id="ticket-form-number"
+                            class="form-control" placeholder="Number of Tickets" required>
+                            <label for="num_tiket">Additional Request</label>
+                        <textarea name="ticket_message" rows="3" class="form-control"
+                            id="ticket-form-message" placeholder="Additional Request"></textarea>
+
+                        <div class="col-lg-4 col-md-10 col-8 mx-auto">
+                            <button type="submit" class="form-control">Buy Ticket</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</section>
+{% endblock body %}

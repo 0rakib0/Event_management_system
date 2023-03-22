@@ -48,3 +48,13 @@ def User_login(request):
             return redirect('Login:login')
         
     return render(request, 'login/login.html')
+
+def User_logout(request):
+    logout(request)
+    return redirect('customar:home')
+
+def Profile(request):
+    context = {
+
+    }
+    return render(request, 'login/profile.html', context)
